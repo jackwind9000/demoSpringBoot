@@ -25,14 +25,6 @@ public class UserService {
     UserMapper userMapper;
 
     public User createUser(UserCreationRequest request) {
-        /*
-        // Example using annotation @Builder in UserCreationRequest DTO
-        UserCreationRequest u = UserCreationRequest.builder()
-                .username("joss")
-                .firstName("joss")
-                .build();
-
-         */
         if (userRepository.existsByUsername(request.getUsername())) {
             throw new AppException(ErrorCode.USER_EXISTED);
 //            throw new RuntimeException("test exception"); //return code OTHER - 9999

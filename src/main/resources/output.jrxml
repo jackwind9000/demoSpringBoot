@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="My designed report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="5a7948e4-6b47-4387-90d0-f9190c54b647">
+	<field name="region" class="java.lang.String"/>
+	<field name="product" class="java.lang.String"/>
+	<field name="sale" class="java.lang.Integer"/>
+	<summary>
+		<band height="700">
+			<crosstab>
+				<reportElement x="40" y="10" width="500" height="300" backcolor="#C0C0C0" uuid="7e8df586-992f-40a8-93ad-cc981ca73437"/>
+				<crosstabDataset>
+					<dataset resetType="Report"/>
+				</crosstabDataset>
+				<rowGroup name="product" width="60" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{product}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="20" uuid="918c9515-9df7-4dd5-bc46-a3358809ba30"/>
+								<textFieldExpression><![CDATA[$V{product}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents mode="Opaque">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="20" uuid="0095c6d8-af53-4ec4-bdbe-151717873765"/>
+								<text><![CDATA[Total product]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="region" height="20" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{region}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="20" uuid="c8730554-988d-4d0b-a199-7713f04ac4cd"/>
+								<textFieldExpression><![CDATA[$V{region}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents mode="Opaque">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="20" uuid="800b6e60-4311-46a4-b34d-5adce0b4a007"/>
+								<text><![CDATA[Total region]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="sale_MEASURE" class="java.lang.Integer" calculation="Sum">
+					<measureExpression><![CDATA[$F{sale}]]></measureExpression>
+				</measure>
+				<crosstabCell width="60" height="20">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" uuid="a97533d6-b6e1-4f73-910a-83d160ec71e0"/>
+							<textFieldExpression><![CDATA[$V{sale_MEASURE}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" columnTotalGroup="region">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" uuid="a26f646b-03ed-4107-abf3-cb07c038bb76"/>
+							<textFieldExpression><![CDATA[$V{sale_MEASURE}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="product">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" uuid="61bb8e83-b9f6-40b5-92f0-79e11de3f047"/>
+							<textFieldExpression><![CDATA[$V{sale_MEASURE}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="product" columnTotalGroup="region">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" uuid="7b5bcb4e-0893-4d73-a121-d5c5e8c9eed8"/>
+							<textFieldExpression><![CDATA[$V{sale_MEASURE}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>
