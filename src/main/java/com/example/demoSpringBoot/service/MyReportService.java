@@ -135,6 +135,10 @@ public class MyReportService {
         jasperDesign.setName("My designed report");
         jasperDesign.setPageHeight(842);
         jasperDesign.setPageWidth(595);
+
+        jasperDesign.addStyle(addStyle("Crosstab_CT", ModeEnum.OPAQUE, Color.LIGHT_GRAY));
+        jasperDesign.addStyle(addStyle("Crosstab_CH", ModeEnum.OPAQUE, Color.BLUE));
+
         JRDesignBand summaryBand = new JRDesignBand();
         summaryBand.setHeight(700);
 
@@ -159,6 +163,7 @@ public class MyReportService {
         crosstab.setWidth(500);
         crosstab.setHeight(300);
         crosstab.setBackcolor(Color.LIGHT_GRAY);
+
 
         //RowGroup
         crosstab.addRowGroup(genCrosstabRowGroup());
@@ -212,18 +217,31 @@ public class MyReportService {
         rowHeaderTextField.setWidth(60);
         rowHeaderTextField.setHeight(20);
         rowHeaderTextField.setExpression(new JRDesignExpression("$V{product}"));
+//        JRLineBox b = rowHeaderTextField.getLineBox();
+//        b.getLeftPen().setLineWidth(.5f);
+//        b.getLeftPen().setLineColor(Color.BLACK);
+//        b.getRightPen().setLineWidth(.5f);
+//        b.getRightPen().setLineColor(Color.BLACK);
+//        b.getTopPen().setLineWidth(.5f);
+//        b.getTopPen().setLineColor(Color.BLACK);
+//        b.getBottomPen().setLineWidth(.5f);
+//        b.getBottomPen().setLineColor(Color.BLACK);
+        setLineFormat(rowHeaderTextField.getLineBox());
         JRDesignCellContents rowHeaderCellContent = new JRDesignCellContents();
         rowHeaderCellContent.addElement(rowHeaderTextField);
         rowHeaderCellContent.setMode(ModeEnum.OPAQUE);
+        rowHeaderCellContent.setStyle(addStyle("Crosstab_CT", null, null));
         rowGroup.setHeader(rowHeaderCellContent);
 
         JRDesignStaticText rowTotalHeaderTextField = new JRDesignStaticText();
         rowTotalHeaderTextField.setWidth(60);
         rowTotalHeaderTextField.setHeight(20);
         rowTotalHeaderTextField.setText("Total product");
+        setLineFormat(rowTotalHeaderTextField.getLineBox());
         JRDesignCellContents rowTotalHeaderCellContent = new JRDesignCellContents();
         rowTotalHeaderCellContent.addElement(rowTotalHeaderTextField);
         rowTotalHeaderCellContent.setMode(ModeEnum.OPAQUE);
+        rowTotalHeaderCellContent.setStyle(addStyle("Crosstab_CT", null, null));
         rowGroup.setTotalHeader(rowTotalHeaderCellContent);
 
         rowGroup.setWidth(60);
@@ -243,18 +261,23 @@ public class MyReportService {
         rowHeaderTextField.setWidth(60);
         rowHeaderTextField.setHeight(20);
         rowHeaderTextField.setExpression(new JRDesignExpression("$V{region}"));
+        setLineFormat(rowHeaderTextField.getLineBox());
         JRDesignCellContents rowHeaderCellContent = new JRDesignCellContents();
         rowHeaderCellContent.addElement(rowHeaderTextField);
         rowHeaderCellContent.setMode(ModeEnum.OPAQUE);
+        JRDesignStyle style = new JRDesignStyle();
+        rowHeaderCellContent.setStyle(addStyle("Crosstab_CH", null, null));
         columnGroup.setHeader(rowHeaderCellContent);
 
         JRDesignStaticText rowTotalHeaderTextField = new JRDesignStaticText();
         rowTotalHeaderTextField.setWidth(60);
         rowTotalHeaderTextField.setHeight(20);
         rowTotalHeaderTextField.setText("Total region");
+        setLineFormat(rowTotalHeaderTextField.getLineBox());
         JRDesignCellContents rowTotalHeaderCellContent = new JRDesignCellContents();
         rowTotalHeaderCellContent.addElement(rowTotalHeaderTextField);
         rowTotalHeaderCellContent.setMode(ModeEnum.OPAQUE);
+        rowTotalHeaderCellContent.setStyle(addStyle("Crosstab_CH", null, null));
         columnGroup.setTotalHeader(rowTotalHeaderCellContent);
         columnGroup.setHeight(20);
         columnGroup.setTotalPosition(CrosstabTotalPositionEnum.END);
@@ -284,5 +307,24 @@ public class MyReportService {
         cellContent1.setMode(ModeEnum.OPAQUE);
         crosstabCell.setContents(cellContent1);
         return crosstabCell;
+    }
+
+    private JRDesignStyle addStyle(String name, ModeEnum mode, Color color) {
+        JRDesignStyle s = new JRDesignStyle();
+        s.setName(name);
+        s.setMode(mode);
+        s.setBackcolor(color);
+        return s;
+    }
+
+    private void setLineFormat(JRLineBox b) {
+        b.getLeftPen().setLineWidth(.5f);
+        b.getLeftPen().setLineColor(Color.BLACK);
+        b.getRightPen().setLineWidth(.5f);
+        b.getRightPen().setLineColor(Color.BLACK);
+        b.getTopPen().setLineWidth(.5f);
+        b.getTopPen().setLineColor(Color.BLACK);
+        b.getBottomPen().setLineWidth(.5f);
+        b.getBottomPen().setLineColor(Color.BLACK);
     }
 }

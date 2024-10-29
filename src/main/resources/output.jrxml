@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="My designed report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="5a7948e4-6b47-4387-90d0-f9190c54b647">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="My designed report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="e8af35ca-f76a-4305-b7f1-5947f734bfbf">
+	<style name="Crosstab_CT" mode="Opaque" backcolor="#C0C0C0"/>
+	<style name="Crosstab_CH" mode="Opaque" backcolor="#0000FF"/>
 	<field name="region" class="java.lang.String"/>
 	<field name="product" class="java.lang.String"/>
 	<field name="sale" class="java.lang.Integer"/>
 	<summary>
 		<band height="700">
 			<crosstab>
-				<reportElement x="40" y="10" width="500" height="300" backcolor="#C0C0C0" uuid="7e8df586-992f-40a8-93ad-cc981ca73437"/>
+				<reportElement x="40" y="10" width="500" height="300" backcolor="#C0C0C0" uuid="c4179c69-7c75-4439-9f0a-0a00f169d6fa"/>
 				<crosstabDataset>
 					<dataset resetType="Report"/>
 				</crosstabDataset>
@@ -15,17 +17,29 @@
 						<bucketExpression><![CDATA[$F{product}]]></bucketExpression>
 					</bucket>
 					<crosstabRowHeader>
-						<cellContents mode="Opaque">
+						<cellContents mode="Opaque" style="Crosstab_CT">
 							<textField>
-								<reportElement x="0" y="0" width="60" height="20" uuid="918c9515-9df7-4dd5-bc46-a3358809ba30"/>
+								<reportElement x="0" y="0" width="60" height="20" uuid="ad6d2077-d463-422a-ad43-8520526bbbc8"/>
+								<box>
+									<topPen lineWidth="0.5" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineColor="#000000"/>
+								</box>
 								<textFieldExpression><![CDATA[$V{product}]]></textFieldExpression>
 							</textField>
 						</cellContents>
 					</crosstabRowHeader>
 					<crosstabTotalRowHeader>
-						<cellContents mode="Opaque">
+						<cellContents mode="Opaque" style="Crosstab_CT">
 							<staticText>
-								<reportElement x="0" y="0" width="60" height="20" uuid="0095c6d8-af53-4ec4-bdbe-151717873765"/>
+								<reportElement x="0" y="0" width="60" height="20" uuid="812ecddb-3b7f-4215-8a47-f9f30282d487"/>
+								<box>
+									<topPen lineWidth="0.5" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineColor="#000000"/>
+								</box>
 								<text><![CDATA[Total product]]></text>
 							</staticText>
 						</cellContents>
@@ -36,17 +50,29 @@
 						<bucketExpression><![CDATA[$F{region}]]></bucketExpression>
 					</bucket>
 					<crosstabColumnHeader>
-						<cellContents mode="Opaque">
+						<cellContents mode="Opaque" style="Crosstab_CH">
 							<textField>
-								<reportElement x="0" y="0" width="60" height="20" uuid="c8730554-988d-4d0b-a199-7713f04ac4cd"/>
+								<reportElement x="0" y="0" width="60" height="20" uuid="f375b529-9d57-4c00-9859-6f3a0b2c6c7f"/>
+								<box>
+									<topPen lineWidth="0.5" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineColor="#000000"/>
+								</box>
 								<textFieldExpression><![CDATA[$V{region}]]></textFieldExpression>
 							</textField>
 						</cellContents>
 					</crosstabColumnHeader>
 					<crosstabTotalColumnHeader>
-						<cellContents mode="Opaque">
+						<cellContents mode="Opaque" style="Crosstab_CH">
 							<staticText>
-								<reportElement x="0" y="0" width="60" height="20" uuid="800b6e60-4311-46a4-b34d-5adce0b4a007"/>
+								<reportElement x="0" y="0" width="60" height="20" uuid="996234cd-ecfb-41b4-9623-99556968f48b"/>
+								<box>
+									<topPen lineWidth="0.5" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineColor="#000000"/>
+								</box>
 								<text><![CDATA[Total region]]></text>
 							</staticText>
 						</cellContents>
@@ -58,7 +84,7 @@
 				<crosstabCell width="60" height="20">
 					<cellContents mode="Opaque">
 						<textField>
-							<reportElement x="0" y="0" width="60" height="20" uuid="a97533d6-b6e1-4f73-910a-83d160ec71e0"/>
+							<reportElement x="0" y="0" width="60" height="20" uuid="3f40ff4a-7022-4c9d-a03f-cbec36353dcc"/>
 							<textFieldExpression><![CDATA[$V{sale_MEASURE}]]></textFieldExpression>
 						</textField>
 					</cellContents>
@@ -66,7 +92,7 @@
 				<crosstabCell width="60" height="20" columnTotalGroup="region">
 					<cellContents mode="Opaque">
 						<textField>
-							<reportElement x="0" y="0" width="60" height="20" uuid="a26f646b-03ed-4107-abf3-cb07c038bb76"/>
+							<reportElement x="0" y="0" width="60" height="20" uuid="c654fbac-0de2-44c7-beb0-93c178b699ad"/>
 							<textFieldExpression><![CDATA[$V{sale_MEASURE}]]></textFieldExpression>
 						</textField>
 					</cellContents>
@@ -74,7 +100,7 @@
 				<crosstabCell width="60" height="20" rowTotalGroup="product">
 					<cellContents mode="Opaque">
 						<textField>
-							<reportElement x="0" y="0" width="60" height="20" uuid="61bb8e83-b9f6-40b5-92f0-79e11de3f047"/>
+							<reportElement x="0" y="0" width="60" height="20" uuid="c48faa88-d07a-4e51-8be1-ddd2f74c3517"/>
 							<textFieldExpression><![CDATA[$V{sale_MEASURE}]]></textFieldExpression>
 						</textField>
 					</cellContents>
@@ -82,7 +108,7 @@
 				<crosstabCell width="60" height="20" rowTotalGroup="product" columnTotalGroup="region">
 					<cellContents mode="Opaque">
 						<textField>
-							<reportElement x="0" y="0" width="60" height="20" uuid="7b5bcb4e-0893-4d73-a121-d5c5e8c9eed8"/>
+							<reportElement x="0" y="0" width="60" height="20" uuid="4a565801-bea3-443e-a1ac-8f3d55083bf5"/>
 							<textFieldExpression><![CDATA[$V{sale_MEASURE}]]></textFieldExpression>
 						</textField>
 					</cellContents>
